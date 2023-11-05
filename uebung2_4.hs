@@ -12,15 +12,15 @@ reverse2 xs = reverseAcc xs []
     where
         reverseAcc :: [a] -> [a] -> [a]
         reverseAcc [] acc     = acc
-        reverseAcc (x:xs) acc = reverseAcc xs (x:acc)
+        reverseAcc (y:ys) acc = reverseAcc ys (y:acc)
 
 --Returns the Index of the given element in the given list or Nothing, if elem
 --is not contained in the list
 indexOf :: Int -> [Int] -> Maybe Int
 indexOf _ [] = Nothing
-indexOf elem (x:xs)
-    | elem == x = Just 0
-    | otherwise = fmap increment (indexOf elem xs)
+indexOf a (x:xs)
+    | a == x = Just 0
+    | otherwise = fmap increment (indexOf a xs)
     where
         increment n = n + 1 
 
