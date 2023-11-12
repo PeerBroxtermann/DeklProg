@@ -51,12 +51,12 @@ countTrue = foldJSON 0 (\b -> if b then 1 else 0) (const 0) (const 0) (const 0) 
 
 prettyJSON :: JSON -> String
 prettyJSON = foldJSON
-  "null"                            -- JNull
-  (\b -> if b then "true" else "false")  -- JBool
-  show                              -- JInt
-  show                              -- JFloat
-  (\s -> '"' : s ++ "\"")           -- JString
-  (\arr -> '[' : commaSep arr ++ "]")     -- JArray
+  "null"                                               -- JNull
+  (\b -> if b then "true" else "false")                -- JBool
+  show                                                 -- JInt
+  show                                                 -- JFloat
+  (\s -> '"' : s ++ "\"")                              -- JString
+  (\arr -> '[' : commaSep arr ++ "]")                  -- JArray
   (\obj -> '{' : commaSep (map prettyKV obj) ++ "}")   -- JObject
   where
     prettyKV (k, v) = '\"' : k ++ "\": " ++ v
