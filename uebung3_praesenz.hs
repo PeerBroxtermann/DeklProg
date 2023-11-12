@@ -38,7 +38,7 @@ foldEither left right either =
         Right x -> right x 
 
 --3.)
-data Tree a b = Empty               -- :: Tree a b
+data Tree a b = Emptyy               -- :: Tree a b
               | Leaf a              -- :: a -> Tree a b
               | Node b [Tree a b]   -- :: b -> [Tree a b] -> Tree a b
     deriving Show
@@ -46,7 +46,7 @@ data Tree a b = Empty               -- :: Tree a b
 foldTree :: r -> (a -> r) -> (b -> [r] -> r) -> Tree a b -> r
 foldTree empty leaf node tree =
     case tree of
-        Empty -> empty
+        Emptyy -> empty
         Leaf a -> leaf a
         Node a ts -> node a (map foldTree' ts)
     where
